@@ -1,0 +1,15 @@
+torchrun --nproc_per_node=8 --nnodes=1 --node_rank=0 main_flow_mar.py \
+    --model flow_mar_large \
+    --diffloss_d 3 \
+    --diffloss_w 1024 \
+    --eval_bsz 64 \
+    --num_images 50000 \
+    --num_iter 256 \
+    --num_sampling_steps 100 \
+    --cfg 1.0 \
+    --cfg_schedule linear \
+    --temperature 1.0 \
+    --output_dir output_dir/flow_mar_large \
+    --resume output_dir/flow_mar_large \
+    --data_path /aiarena/group/gmgroup/ImageNet \
+    --evaluate \

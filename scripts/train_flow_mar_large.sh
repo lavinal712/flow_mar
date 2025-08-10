@@ -1,0 +1,20 @@
+torchrun --nproc_per_node=8 --nnodes=1 main_flow_mar.py \
+    --img_size 256 \
+    --vae_path pretrained_models/vae/kl16.ckpt \
+    --vae_embed_dim 16 \
+    --vae_stride 16 \
+    --patch_size 1 \
+    --model flow_mar_large \
+    --diffloss_d 3 \
+    --diffloss_w 1024 \
+    --epochs 50 \
+    --warmup_epochs 10 \
+    --batch_size 64 \
+    --blr 1.0e-4 \
+    --diffusion_batch_mul 4 \
+    --output_dir ./output_dir/flow_mar_large \
+    --resume ./output_dir/flow_mar_large \
+    --data_path /aiarena/group/gmgroup/ImageNet \
+    --use_cache \
+    --cached_path /aiarena/group/gmgroup/hongyq/data/LTH14/mar/latents \
+    --grad_checkpointing \
